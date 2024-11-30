@@ -1,30 +1,30 @@
-import { useState, useEffect, Fragment } from 'react'
-import Menu from '@/components/ui/Menu'
-import VerticalSingleMenuItem from './VerticalSingleMenuItem'
-import VerticalCollapsedMenuItem from './VerticalCollapsedMenuItem'
-import { themeConfig } from '@/configs/theme.config'
+import { useState, useEffect, Fragment } from 'react';
+import Menu from '@/components/ui/Menu';
+import VerticalSingleMenuItem from './VerticalSingleMenuItem';
+import VerticalCollapsedMenuItem from './VerticalCollapsedMenuItem';
+import { themeConfig } from '@/configs/theme.config';
 import {
     NAV_ITEM_TYPE_TITLE,
     NAV_ITEM_TYPE_COLLAPSE,
     NAV_ITEM_TYPE_ITEM,
-} from '@/constants/navigation.constant'
-import useMenuActive from '@/utils/hooks/useMenuActive'
-import useTranslation from '@/utils/hooks/useTranslation'
-import { Direction } from '@/@types/theme'
-import type { NavigationTree } from '@/@types/navigation'
-import type { TraslationFn } from '@/@types/common'
+} from '@/constants/navigation.constant';
+import useMenuActive from '@/utils/hooks/useMenuActive';
+import useTranslation from '@/utils/hooks/useTranslation';
+import { Direction } from '@/@types/theme';
+import type { NavigationTree } from '@/@types/navigation';
+import type { TraslationFn } from '@/@types/common';
 
 export interface VerticalMenuContentProps {
-    collapsed?: boolean
-    routeKey: string
-    navigationTree?: NavigationTree[]
-    onMenuItemClick?: () => void
-    direction?: Direction
-    translationSetup?: boolean
-    userAuthority: string[]
+    collapsed?: boolean;
+    routeKey: string;
+    navigationTree?: NavigationTree[];
+    onMenuItemClick?: () => void;
+    direction?: Direction;
+    translationSetup?: boolean;
+    userAuthority: string[];
 }
 
-const { MenuGroup } = Menu
+const { MenuGroup } = Menu;
 
 const VerticalMenuContent = (props: VerticalMenuContentProps) => {
     const {
@@ -35,31 +35,31 @@ const VerticalMenuContent = (props: VerticalMenuContentProps) => {
         direction = themeConfig.direction,
         translationSetup,
         userAuthority,
-    } = props
+    } = props;
 
-    const { t } = useTranslation(!translationSetup)
+    const { t } = useTranslation(!translationSetup);
 
-    const [defaulExpandKey, setDefaulExpandKey] = useState<string[]>([])
+    const [defaulExpandKey, setDefaulExpandKey] = useState<string[]>([]);
 
-    const { activedRoute } = useMenuActive(navigationTree, routeKey)
+    const { activedRoute } = useMenuActive(navigationTree, routeKey);
 
     useEffect(() => {
         if (defaulExpandKey.length === 0 && activedRoute?.parentKey) {
-            setDefaulExpandKey([activedRoute?.parentKey])
+            setDefaulExpandKey([activedRoute?.parentKey]);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [activedRoute?.parentKey])
+    }, [activedRoute?.parentKey]);
 
     const handleLinkClick = () => {
-        onMenuItemClick?.()
-    }
+        onMenuItemClick?.();
+    };
 
     const renderNavigation = (
         navTree: NavigationTree[],
         cascade: number = 0,
         indent?: boolean
     ) => {
-        const nextCascade = cascade + 1
+        const nextCascade = cascade + 1;
 
         return (
             <>
@@ -121,8 +121,8 @@ const VerticalMenuContent = (props: VerticalMenuContentProps) => {
                     </Fragment>
                 ))}
             </>
-        )
-    }
+        );
+    };
 
     return (
         <Menu
@@ -136,7 +136,7 @@ const VerticalMenuContent = (props: VerticalMenuContentProps) => {
         >
             {renderNavigation(navigationTree, 0)}
         </Menu>
-    )
-}
+    );
+};
 
-export default VerticalMenuContent
+export default VerticalMenuContent;

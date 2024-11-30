@@ -1,16 +1,11 @@
 import {
-    FIELD_TYPE_TEXT,
-    FIELD_TYPE_SELECT,
-    FIELD_TYPE_CHECKBOX,
-    FIELD_TYPE_GRID,
-    FIELD_TYPE_FILE,
-    FIELD_TYPE_DIVIDER,
-    FIELD_TYPE_DISPLAY,
-    FIELD_TYPE_RICHTEXT,
     FIELD_TYPE_CHECKTREE,
-} from '@/constants/fields.constant'
+    FIELD_TYPE_RICHTEXT,
+    FIELD_TYPE_SELECT,
+    FIELD_TYPE_TEXT,
+} from '@/constants/fields.constant';
 
-import type { FormFieldConfig } from '@/@types/forms'
+import type { FormFieldConfig } from '@/@types/forms';
 
 const formConfig: FormFieldConfig = {
     config: {
@@ -42,7 +37,6 @@ const formConfig: FormFieldConfig = {
             browserWidth: 1,
             type: FIELD_TYPE_TEXT,
             canBrowse: true,
-            canMobile: true,
             canRead: true,
             canEdit: true,
             canAdd: true,
@@ -52,31 +46,12 @@ const formConfig: FormFieldConfig = {
             showOnTop: false,
         },
         {
-            name: 'project_files',
-            order: 61,
-            width: 12,
-            browserWidth: 6,
-            type: FIELD_TYPE_FILE,
-            canBrowse: false,
-            canRead: true,
-            canEdit: true,
-            canAdd: true,
-            label: 'Anexos',
-            tabs: ['main'],
-            showOnTop: false,
-            multifiles: true,
-            showQuestions: true,
-        },
-        {
             name: 'project_obs',
             order: 65,
             width: 12,
             browserWidth: 6,
-            mobileOrder: 8,
-            mobileWidth: 10,
             type: FIELD_TYPE_RICHTEXT,
             canBrowse: false,
-            canMobileInfo: true,
             canRead: true,
             canEdit: true,
             canAdd: true,
@@ -96,17 +71,11 @@ const formConfig: FormFieldConfig = {
             canEdit: true,
             canAdd: true,
             label: 'Iniciado Por',
-            hidden: false,
-            readonly: true,
+            readOnly: true,
             tabs: ['main'],
             showOnTop: false,
-            api: {
-                method: 'GET',
-                uses: [{ type: 'prop' }],
-                url: '/api/v1/users/select',
-            },
+            api: '/api/v1/users/select',
             displayLabel: 'user_name',
-            alias: 'userStart',
             browseLabel: 'userStart.user_name',
         },
         {
@@ -122,40 +91,13 @@ const formConfig: FormFieldConfig = {
             label: 'Usuarios Responsaveis',
             tabs: ['main'],
             showOnTop: false,
-            api: {
-                method: 'GET',
-                uses: [
-                    {
-                        type: 'field',
-                        field: 'project_involveds',
-                        as: 'data',
-                    },
-                ],
-                url: '/api/v1/users/select',
-            },
-            useActive: true,
+            api: '/api/v1/users/select',
             displayLabel:
                 "users.user_name + '-' + users.user_cpf_cnpj + '-' + users.role.role_name",
-            alias: 'users',
             browseLabel:
                 "users.user_name + '-' + users.user_cpf_cnpj + '-' + users.role.role_name",
         },
-        {
-            name: 'project_div1',
-            order: 36,
-            width: 12,
-            browserWidth: 6,
-            type: FIELD_TYPE_DIVIDER,
-            canBrowse: false,
-            canMobile: false,
-            canRead: true,
-            canEdit: true,
-            canAdd: true,
-            label: 'Dados do Cliente',
-            tabs: ['main'],
-            showOnTop: false,
-        },
     ],
-}
+};
 
-export default formConfig
+export default formConfig;

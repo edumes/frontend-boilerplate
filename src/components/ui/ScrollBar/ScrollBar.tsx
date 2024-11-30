@@ -1,20 +1,20 @@
-import { forwardRef } from 'react'
-import SimpleBarReact from 'simplebar-react'
-import type { Props } from 'simplebar-react'
-import type SimpleBarCore from 'simplebar-core'
+import { forwardRef } from 'react';
+import SimpleBarReact from 'simplebar-react';
+import type { Props } from 'simplebar-react';
+import type SimpleBarCore from 'simplebar-core';
 
-import type { TypeAttributes } from '../@types/common'
+import type { TypeAttributes } from '../@types/common';
 
 export interface ScrollBarProps extends Props {
-    direction?: TypeAttributes.Direction
+    direction?: TypeAttributes.Direction;
 }
 
-export type ScrollBarRef = SimpleBarCore
+export type ScrollBarRef = SimpleBarCore;
 
 const ScrollBar = forwardRef<ScrollBarRef, ScrollBarProps>((props, ref) => {
-    return <SimpleBarReact ref={ref} {...props} />
-})
+    return <SimpleBarReact ref={ref} {...props} />;
+});
 
-ScrollBar.displayName = 'ScrollBar'
+ScrollBar.displayName = 'ScrollBar';
 
-export default ScrollBar
+export default ScrollBar;

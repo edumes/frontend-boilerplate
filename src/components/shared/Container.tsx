@@ -1,13 +1,18 @@
-import { forwardRef, ElementType } from 'react'
-import classNames from 'classnames'
-import { CommonProps } from '@/@types/common'
+import { forwardRef, ElementType } from 'react';
+import classNames from 'classnames';
+import { CommonProps } from '@/@types/common';
 
 interface ContainerProps extends CommonProps {
-    asElement?: ElementType
+    asElement?: ElementType;
 }
 
 const Container = forwardRef((props: ContainerProps, ref) => {
-    const { className, children, asElement: Component = 'div', ...rest } = props
+    const {
+        className,
+        children,
+        asElement: Component = 'div',
+        ...rest
+    } = props;
 
     return (
         <Component
@@ -17,9 +22,9 @@ const Container = forwardRef((props: ContainerProps, ref) => {
         >
             {children}
         </Component>
-    )
-})
+    );
+});
 
-Container.displayName = 'Container'
+Container.displayName = 'Container';
 
-export default Container
+export default Container;

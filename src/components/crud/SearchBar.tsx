@@ -1,6 +1,6 @@
-import SearchIcon from '@mui/icons-material/Search'
-import InputBase from '@mui/material/InputBase'
-import { alpha, styled } from '@mui/material/styles'
+import SearchIcon from '@mui/icons-material/Search';
+import InputBase from '@mui/material/InputBase';
+import { alpha, styled } from '@mui/material/styles';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -15,7 +15,7 @@ const Search = styled('div')(({ theme }) => ({
         marginLeft: theme.spacing(1),
         width: 'auto',
     },
-}))
+}));
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
     padding: theme.spacing(0, 2),
@@ -25,7 +25,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-}))
+}));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'inherit',
@@ -41,7 +41,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
             },
         },
     },
-}))
+}));
 
 export default function SearchBar({ placeholder }: { placeholder: string }) {
     return (
@@ -54,5 +54,5 @@ export default function SearchBar({ placeholder }: { placeholder: string }) {
                 inputProps={{ 'aria-label': 'search' }}
             />
         </Search>
-    )
+    );
 }

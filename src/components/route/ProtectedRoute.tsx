@@ -1,17 +1,17 @@
-import appConfig from '@/configs/app.config'
-import { REDIRECT_URL_KEY } from '@/constants/app.constant'
-import { Navigate, Outlet, useLocation } from 'react-router-dom'
-import { useAuth } from '@/auth'
+import appConfig from '@/configs/app.config';
+import { REDIRECT_URL_KEY } from '@/constants/app.constant';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import { useAuth } from '@/auth';
 
-const { unAuthenticatedEntryPath } = appConfig
+const { unAuthenticatedEntryPath } = appConfig;
 
 const ProtectedRoute = () => {
-    const { authenticated } = useAuth()
+    const { authenticated } = useAuth();
 
-    const { pathname } = useLocation()
+    const { pathname } = useLocation();
 
     const getPathName =
-        pathname === '/' ? '' : `?${REDIRECT_URL_KEY}=${location.pathname}`
+        pathname === '/' ? '' : `?${REDIRECT_URL_KEY}=${location.pathname}`;
 
     if (!authenticated) {
         return (
@@ -19,10 +19,10 @@ const ProtectedRoute = () => {
                 replace
                 to={`${unAuthenticatedEntryPath}${getPathName}`}
             />
-        )
+        );
     }
 
-    return <Outlet />
-}
+    return <Outlet />;
+};
 
-export default ProtectedRoute
+export default ProtectedRoute;

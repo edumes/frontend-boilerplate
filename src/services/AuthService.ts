@@ -1,5 +1,5 @@
-import ApiService from './ApiService'
-import endpointConfig from '@/configs/endpoint.config'
+import ApiService from './ApiService';
+import endpointConfig from '@/configs/endpoint.config';
 import type {
     SignInCredential,
     SignUpCredential,
@@ -7,14 +7,14 @@ import type {
     ResetPassword,
     SignInResponse,
     SignUpResponse,
-} from '@/@types/auth'
+} from '@/@types/auth';
 
 export async function apiSignIn(data: SignInCredential) {
     return ApiService.fetchDataWithAxios<SignInResponse>({
         url: endpointConfig.signIn,
         method: 'post',
         data,
-    })
+    });
 }
 
 export async function apiSignUp(data: SignUpCredential) {
@@ -22,14 +22,14 @@ export async function apiSignUp(data: SignUpCredential) {
         url: endpointConfig.signUp,
         method: 'post',
         data,
-    })
+    });
 }
 
 export async function apiSignOut() {
     return ApiService.fetchDataWithAxios({
         url: endpointConfig.signOut,
         method: 'post',
-    })
+    });
 }
 
 export async function apiForgotPassword<T>(data: ForgotPassword) {
@@ -37,7 +37,7 @@ export async function apiForgotPassword<T>(data: ForgotPassword) {
         url: endpointConfig.forgotPassword,
         method: 'post',
         data,
-    })
+    });
 }
 
 export async function apiResetPassword<T>(data: ResetPassword) {
@@ -45,5 +45,5 @@ export async function apiResetPassword<T>(data: ResetPassword) {
         url: endpointConfig.resetPassword,
         method: 'post',
         data,
-    })
+    });
 }

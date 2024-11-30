@@ -1,16 +1,16 @@
-import ConfigProvider from '@/components/ui/ConfigProvider'
-import { themeConfig } from '@/configs/theme.config'
-import useDarkMode from '@/utils/hooks/useDarkMode'
-import useLocale from '@/utils/hooks/useLocale'
-import useDirection from '@/utils/hooks/useDirection'
+import ConfigProvider from '@/components/ui/ConfigProvider';
+import { themeConfig } from '@/configs/theme.config';
+import useDarkMode from '@/utils/hooks/useDarkMode';
+import useLocale from '@/utils/hooks/useLocale';
+import useDirection from '@/utils/hooks/useDirection';
 
-import type { CommonProps } from '@/@types/common'
+import type { CommonProps } from '@/@types/common';
 
 const Theme = (props: CommonProps) => {
-    useDarkMode()
-    useDirection()
+    useDarkMode();
+    useDirection();
 
-    const { locale } = useLocale()
+    const { locale } = useLocale();
 
     return (
         <ConfigProvider
@@ -21,7 +21,7 @@ const Theme = (props: CommonProps) => {
         >
             {props.children}
         </ConfigProvider>
-    )
-}
+    );
+};
 
-export default Theme
+export default Theme;

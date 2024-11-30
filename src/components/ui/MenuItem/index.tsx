@@ -1,18 +1,18 @@
-import { forwardRef } from 'react'
-import classNames from 'classnames'
-import type { CommonProps } from '../@types/common'
-import type { ElementType } from 'react'
-import { PiDotOutlineFill } from 'react-icons/pi'
+import { forwardRef } from 'react';
+import classNames from 'classnames';
+import type { CommonProps } from '../@types/common';
+import type { ElementType } from 'react';
+import { PiDotOutlineFill } from 'react-icons/pi';
 
 export interface MenuItemProps extends CommonProps {
-    asElement?: ElementType
-    id?: string
-    disabled?: boolean
-    dotIndent?: boolean
-    eventKey?: string
-    isActive?: boolean
-    menuItemHeight?: string | number
-    onSelect?: (eventKey: string, e: MouseEvent) => void
+    asElement?: ElementType;
+    id?: string;
+    disabled?: boolean;
+    dotIndent?: boolean;
+    eventKey?: string;
+    isActive?: boolean;
+    menuItemHeight?: string | number;
+    onSelect?: (eventKey: string, e: MouseEvent) => void;
 }
 
 const MenuItem = forwardRef<HTMLElement, MenuItemProps>((props, ref) => {
@@ -28,11 +28,11 @@ const MenuItem = forwardRef<HTMLElement, MenuItemProps>((props, ref) => {
         onSelect,
         style,
         ...rest
-    } = props
+    } = props;
 
-    const menuItemActiveClass = `menu-item-active`
-    const menuItemHoverClass = `menu-item-hoverable`
-    const disabledClass = 'menu-item-disabled'
+    const menuItemActiveClass = `menu-item-active`;
+    const menuItemHoverClass = `menu-item-hoverable`;
+    const disabledClass = 'menu-item-disabled';
     const menuItemClass = classNames(
         'menu-item',
         isActive && menuItemActiveClass,
@@ -40,13 +40,13 @@ const MenuItem = forwardRef<HTMLElement, MenuItemProps>((props, ref) => {
         !disabled && menuItemHoverClass,
         dotIndent && 'items-center gap-2',
         className
-    )
+    );
 
     const hanldeOnClick = (e: MouseEvent) => {
         if (onSelect) {
-            onSelect(eventKey as string, e)
+            onSelect(eventKey as string, e);
         }
-    }
+    };
 
     return (
         <Component
@@ -72,9 +72,9 @@ const MenuItem = forwardRef<HTMLElement, MenuItemProps>((props, ref) => {
                 <>{children}</>
             )}
         </Component>
-    )
-})
+    );
+});
 
-MenuItem.displayName = 'BaseMenuItem'
+MenuItem.displayName = 'BaseMenuItem';
 
-export default MenuItem
+export default MenuItem;

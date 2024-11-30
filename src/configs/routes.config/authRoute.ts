@@ -1,5 +1,5 @@
-import { lazy } from 'react'
-import type { Routes } from '@/@types/routes'
+import { lazy } from 'react';
+import type { Routes } from '@/@types/routes';
 
 const authRoute: Routes = [
     {
@@ -26,6 +26,6 @@ const authRoute: Routes = [
         component: lazy(() => import('@/pages/auth/ResetPassword')),
         authority: [],
     },
-]
+];
 
-export default authRoute
+export default authRoute;

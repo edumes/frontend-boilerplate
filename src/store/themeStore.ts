@@ -1,20 +1,20 @@
-import { themeConfig } from '@/configs/theme.config'
-import { create } from 'zustand'
-import type { Theme, LayoutType, Direction } from '@/@types/theme'
+import { themeConfig } from '@/configs/theme.config';
+import { create } from 'zustand';
+import type { Theme, LayoutType, Direction } from '@/@types/theme';
 
-type ThemeState = Theme
+type ThemeState = Theme;
 
 type ThemeAction = {
-    setSchema: (payload: string) => void
-    setMode: (payload: ThemeState['mode']) => void
-    setSideNavCollapse: (payload: boolean) => void
-    setDirection: (payload: Direction) => void
-    setPanelExpand: (payload: boolean) => void
-    setLayout: (payload: LayoutType) => void
-    setPreviousLayout: (payload: LayoutType | '') => void
-}
+    setSchema: (payload: string) => void;
+    setMode: (payload: ThemeState['mode']) => void;
+    setSideNavCollapse: (payload: boolean) => void;
+    setDirection: (payload: Direction) => void;
+    setPanelExpand: (payload: boolean) => void;
+    setLayout: (payload: LayoutType) => void;
+    setPreviousLayout: (payload: LayoutType | '') => void;
+};
 
-const inititialThemeState = themeConfig
+const inititialThemeState = themeConfig;
 
 export const useThemeStore = create<ThemeState & ThemeAction>()((set) => ({
     ...inititialThemeState,
@@ -34,4 +34,4 @@ export const useThemeStore = create<ThemeState & ThemeAction>()((set) => ({
         set((state) => ({
             layout: { ...state.layout, previousType: payload },
         })),
-}))
+}));

@@ -7,34 +7,34 @@ import {
     Paper,
     Stack,
     Typography,
-} from '@mui/material'
-import { HiOutlineMenu, HiOutlinePlus } from 'react-icons/hi'
-import { useNavigate } from 'react-router-dom'
-import BrowseTable from './BrowseTable'
-import SearchBar from './SearchBar'
+} from '@mui/material';
+import { HiOutlineMenu, HiOutlinePlus } from 'react-icons/hi';
+import { useNavigate } from 'react-router-dom';
+import BrowseTable from './BrowseTable';
+import SearchBar from './SearchBar';
 // import { item } from '../motion/MotionSettings';
 
 export default function Browserlize({ onRead, onEdit, form, name }: any) {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const generateFieldLabels = (fieldsObject: any) => {
-        const labels: string[] = []
-        let count = 0
+        const labels: string[] = [];
+        let count = 0;
 
         for (const fieldName in fieldsObject) {
             if (Object.prototype.hasOwnProperty.call(fieldsObject, fieldName)) {
-                count++
+                count++;
                 if (count >= 2 && count <= 4) {
-                    labels.push(fieldsObject[fieldName].label)
+                    labels.push(fieldsObject[fieldName].label);
                 }
             }
         }
 
-        const firstTwoLabels = labels.slice(0, 2).join(', ')
-        const lastLabel = labels.length > 2 ? ` ou ${labels[2]}` : ''
+        const firstTwoLabels = labels.slice(0, 2).join(', ');
+        const lastLabel = labels.length > 2 ? ` ou ${labels[2]}` : '';
 
-        return `${firstTwoLabels}${lastLabel}`
-    }
+        return `${firstTwoLabels}${lastLabel}`;
+    };
 
     return (
         <>
@@ -103,5 +103,5 @@ export default function Browserlize({ onRead, onEdit, form, name }: any) {
             <BrowseTable fields={form.fields} />
             {/* </motion.div> */}
         </>
-    )
+    );
 }

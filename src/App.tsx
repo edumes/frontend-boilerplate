@@ -1,14 +1,14 @@
-import { AuthProvider } from '@/auth'
-import Layout from '@/components/layouts'
-import Theme from '@/components/template/Theme'
-import Views from '@/pages'
-import '@fontsource/inter'
-import { BrowserRouter } from 'react-router-dom'
-import appConfig from './configs/app.config'
-import './locales'
+import { AuthProvider } from '@/auth';
+import Layout from '@/components/layouts';
+import Theme from '@/components/template/Theme';
+import Views from '@/pages';
+import '@fontsource/inter';
+import { BrowserRouter } from 'react-router-dom';
+import appConfig from './configs/app.config';
+import './locales';
 
 if (appConfig.enableMock) {
-    import('./mock')
+    import('./mock');
 }
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
                 </AuthProvider>
             </BrowserRouter>
         </Theme>
-    )
+    );
 }
 
-export default App
+export default App;

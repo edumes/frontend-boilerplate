@@ -1,24 +1,24 @@
-import { useContext } from 'react'
-import classNames from 'classnames'
-import { GroupContextProvider } from './context/groupContext'
-import MenuContext from './context/menuContext'
-import useUniqueId from '../hooks/useUniqueId'
-import type { CommonProps } from '../@types/common'
-import type { ReactNode } from 'react'
+import { useContext } from 'react';
+import classNames from 'classnames';
+import { GroupContextProvider } from './context/groupContext';
+import MenuContext from './context/menuContext';
+import useUniqueId from '../hooks/useUniqueId';
+import type { CommonProps } from '../@types/common';
+import type { ReactNode } from 'react';
 
 export interface MenuGroupProps extends CommonProps {
-    label: string | ReactNode
+    label: string | ReactNode;
 }
 
 const MenuGroup = (props: MenuGroupProps) => {
-    const { label, children, className } = props
+    const { label, children, className } = props;
 
-    const { sideCollapsed } = useContext(MenuContext)
+    const { sideCollapsed } = useContext(MenuContext);
 
-    const menuGroupDefaultClass = 'menu-group'
-    const menuGroupClass = classNames(menuGroupDefaultClass, className)
+    const menuGroupDefaultClass = 'menu-group';
+    const menuGroupClass = classNames(menuGroupDefaultClass, className);
 
-    const entityHeaderId = useUniqueId('entity-header-')
+    const entityHeaderId = useUniqueId('entity-header-');
 
     return (
         <div className={menuGroupClass}>
@@ -31,9 +31,9 @@ const MenuGroup = (props: MenuGroupProps) => {
                 <ul>{children}</ul>
             </GroupContextProvider>
         </div>
-    )
-}
+    );
+};
 
-MenuGroup.displayName = 'MenuGroup'
+MenuGroup.displayName = 'MenuGroup';
 
-export default MenuGroup
+export default MenuGroup;

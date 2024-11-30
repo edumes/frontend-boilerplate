@@ -1,4 +1,4 @@
-export const apiPrefix = '/api'
+export const apiPrefix = '/api';
 
 const endpointConfig = {
     signIn: '/sign-in',
@@ -6,6 +6,8 @@ const endpointConfig = {
     signUp: '/sign-up',
     forgotPassword: '/forgot-password',
     resetPassword: '/reset-password',
-}
 
-export default endpointConfig
+    listClients: 'clients/list',
+};
+
+export default endpointConfig;

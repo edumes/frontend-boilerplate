@@ -1,44 +1,46 @@
-import { useState, Suspense, lazy } from 'react'
-import classNames from 'classnames'
-import Drawer from '@/components/ui/Drawer'
-import NavToggle from '@/components/shared/NavToggle'
-import { DIR_RTL } from '@/constants/theme.constant'
-import withHeaderItem, { WithHeaderItemProps } from '@/utils/hoc/withHeaderItem'
-import navigationConfig from '@/configs/navigation.config'
-import { useThemeStore } from '@/store/themeStore'
-import { useRouteKeyStore } from '@/store/routeKeyStore'
-import { useSessionUser } from '@/store/authStore'
+import { useState, Suspense, lazy } from 'react';
+import classNames from 'classnames';
+import Drawer from '@/components/ui/Drawer';
+import NavToggle from '@/components/shared/NavToggle';
+import { DIR_RTL } from '@/constants/theme.constant';
+import withHeaderItem, {
+    WithHeaderItemProps,
+} from '@/utils/hoc/withHeaderItem';
+import navigationConfig from '@/configs/navigation.config';
+import { useThemeStore } from '@/store/themeStore';
+import { useRouteKeyStore } from '@/store/routeKeyStore';
+import { useSessionUser } from '@/store/authStore';
 
 const VerticalMenuContent = lazy(
     () => import('@/components/template/VerticalMenuContent')
-)
+);
 
 type MobileNavToggleProps = {
-    toggled?: boolean
-}
+    toggled?: boolean;
+};
 
 const MobileNavToggle = withHeaderItem<
     MobileNavToggleProps & WithHeaderItemProps
->(NavToggle)
+>(NavToggle);
 
 const MobileNav = () => {
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleOpenDrawer = () => {
-        setIsOpen(true)
-    }
+        setIsOpen(true);
+    };
 
     const handleDrawerClose = () => {
-        setIsOpen(false)
-    }
+        setIsOpen(false);
+    };
 
-    const direction = useThemeStore((state) => state.direction)
+    const direction = useThemeStore((state) => state.direction);
     const sideNavCollapse = useThemeStore(
         (state) => state.layout.sideNavCollapse
-    )
-    const currentRouteKey = useRouteKeyStore((state) => state.currentRouteKey)
+    );
+    const currentRouteKey = useRouteKeyStore((state) => state.currentRouteKey);
 
-    const userAuthority = useSessionUser((state) => state.user.authority)
+    const userAuthority = useSessionUser((state) => state.user.authority);
 
     return (
         <>
@@ -68,7 +70,7 @@ const MobileNav = () => {
                 </Suspense>
             </Drawer>
         </>
-    )
-}
+    );
+};
 
-export default MobileNav
+export default MobileNav;

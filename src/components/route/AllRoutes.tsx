@@ -1,25 +1,25 @@
-import ProtectedRoute from './ProtectedRoute'
-import PublicRoute from './PublicRoute'
-import AuthorityGuard from './AuthorityGuard'
-import AppRoute from './AppRoute'
-import PageContainer from '@/components/template/PageContainer'
-import { protectedRoutes, publicRoutes } from '@/configs/routes.config'
-import appConfig from '@/configs/app.config'
-import { useAuth } from '@/auth'
-import { Routes, Route, Navigate } from 'react-router-dom'
-import type { LayoutType } from '@/@types/theme'
+import ProtectedRoute from './ProtectedRoute';
+import PublicRoute from './PublicRoute';
+import AuthorityGuard from './AuthorityGuard';
+import AppRoute from './AppRoute';
+import PageContainer from '@/components/template/PageContainer';
+import { protectedRoutes, publicRoutes } from '@/configs/routes.config';
+import appConfig from '@/configs/app.config';
+import { useAuth } from '@/auth';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import type { LayoutType } from '@/@types/theme';
 
 interface ViewsProps {
-    pageContainerType?: 'default' | 'gutterless' | 'contained'
-    layout?: LayoutType
+    pageContainerType?: 'default' | 'gutterless' | 'contained';
+    layout?: LayoutType;
 }
 
-type AllRoutesProps = ViewsProps
+type AllRoutesProps = ViewsProps;
 
-const { authenticatedEntryPath } = appConfig
+const { authenticatedEntryPath } = appConfig;
 
 const AllRoutes = (props: AllRoutesProps) => {
-    const { user } = useAuth()
+    const { user } = useAuth();
 
     return (
         <Routes>
@@ -66,7 +66,7 @@ const AllRoutes = (props: AllRoutesProps) => {
                 ))}
             </Route>
         </Routes>
-    )
-}
+    );
+};
 
-export default AllRoutes
+export default AllRoutes;

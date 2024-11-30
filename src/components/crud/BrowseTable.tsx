@@ -1,18 +1,18 @@
-import { Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material'
-import { IconButton } from '@mui/material'
-import { DataGrid, GridToolbar } from '@mui/x-data-grid'
-import { useDemoData } from '@mui/x-data-grid-generator'
-import { ptBR } from '@mui/x-data-grid/locales'
-import { useEffect, useMemo, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { useAPI } from '@/utils/hooks/useAPI'
+import { Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material';
+import { IconButton } from '@mui/material';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import { useDemoData } from '@mui/x-data-grid-generator';
+import { ptBR } from '@mui/x-data-grid/locales';
+import { useEffect, useMemo, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useAPI } from '@/utils/hooks/useAPI';
 
 export default function BrowseTable({ fields }: any) {
-    const navigate = useNavigate()
-    const [loading, setLoading] = useState<boolean>(true)
-    const [list, setList] = useState<any>([])
+    const navigate = useNavigate();
+    const [loading, setLoading] = useState<boolean>(true);
+    const [list, setList] = useState<any>([]);
     // const { list: fetchList } = useAPI();
-    const { crud } = useParams()
+    const { crud } = useParams();
 
     // const memoizedFetchList = useMemo(() => fetchList, []);
 
@@ -22,56 +22,56 @@ export default function BrowseTable({ fields }: any) {
                 // const ListData = await memoizedFetchList(crud);
                 // setList(addIdsToListItems(ListData.items));
             } catch (error) {
-                console.error('Erro ao buscar os menus:', error)
+                console.error('Erro ao buscar os menus:', error);
             } finally {
-                setLoading(false)
+                setLoading(false);
             }
-        }
+        };
 
-        fetchListData()
-    }, [])
+        fetchListData();
+    }, []);
 
     function transformObjectToGridFormat(object: any) {
-        const fields = []
+        const fields = [];
 
         for (const key in object) {
-            if (key === '$GLOBALS') continue
+            if (key === '$GLOBALS') continue;
 
-            const field = object[key]
+            const field = object[key];
             const gridField: any = {
                 field: field.name,
                 headerName: field.label,
                 width: field.width * 50,
-            }
+            };
 
-            fields.push(gridField)
+            fields.push(gridField);
         }
 
-        return fields
+        return fields;
     }
 
     const addIdsToListItems = (items: any[]) => {
         return items.map((item, index) => {
-            return { id: index + 1, ...item }
-        })
-    }
+            return { id: index + 1, ...item };
+        });
+    };
 
     const handleEditClick = (id: number) => {
-        console.log('Editar linha com ID:', id)
-    }
+        console.log('Editar linha com ID:', id);
+    };
 
     const handleDeleteClick = (id: number) => {
-        console.log('Excluir linha com ID:', id)
-    }
+        console.log('Excluir linha com ID:', id);
+    };
 
     const { data } = useDemoData({
         dataSet: 'Commodity',
         rowLength: 10,
         maxColumns: 10,
-    })
+    });
 
     const columns = useMemo(() => {
-        const baseColumns = transformObjectToGridFormat(fields)
+        const baseColumns = transformObjectToGridFormat(fields);
         return [
             ...baseColumns,
             {
@@ -99,8 +99,8 @@ export default function BrowseTable({ fields }: any) {
                 ),
                 position: 'right',
             },
-        ]
-    }, [fields])
+        ];
+    }, [fields]);
 
     return (
         <>
@@ -123,5 +123,5 @@ export default function BrowseTable({ fields }: any) {
                 <div>No data available.</div>
             )}
         </>
-    )
+    );
 }

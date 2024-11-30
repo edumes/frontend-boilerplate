@@ -1,12 +1,12 @@
-import { forwardRef } from 'react'
-import FormContainer from './FormContainer'
-import type { ComponentPropsWithoutRef } from 'react'
-import type { FormContainerProps } from './FormContainer'
+import { forwardRef } from 'react';
+import FormContainer from './FormContainer';
+import type { ComponentPropsWithoutRef } from 'react';
+import type { FormContainerProps } from './FormContainer';
 
 export type FormProps = ComponentPropsWithoutRef<'form'> &
     FormContainerProps & {
-        containerClassName?: string
-    }
+        containerClassName?: string;
+    };
 
 export const Form = forwardRef<HTMLFormElement, FormProps>(
     (props: FormProps, ref) => {
@@ -17,7 +17,7 @@ export const Form = forwardRef<HTMLFormElement, FormProps>(
             layout,
             size,
             ...rest
-        } = props
+        } = props;
 
         return (
             <form ref={ref} {...rest}>
@@ -30,10 +30,10 @@ export const Form = forwardRef<HTMLFormElement, FormProps>(
                     {children}
                 </FormContainer>
             </form>
-        )
+        );
     }
-)
+);
 
-Form.displayName = 'Form'
+Form.displayName = 'Form';
 
-export default Form
+export default Form;

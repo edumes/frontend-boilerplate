@@ -1,5 +1,5 @@
-import { ControlPoint } from '@mui/icons-material'
-import ViewListIcon from '@mui/icons-material/ViewList'
+import { ControlPoint } from '@mui/icons-material';
+import ViewListIcon from '@mui/icons-material/ViewList';
 import {
     Box,
     Button,
@@ -9,19 +9,19 @@ import {
     Paper,
     Stack,
     Typography,
-} from '@mui/material'
-import { motion } from 'framer-motion'
-import { useNavigate } from 'react-router-dom'
-import BrowseTable from './BrowseTable'
-import SearchBar from './SearchBar'
+} from '@mui/material';
+import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import BrowseTable from './BrowseTable';
+import SearchBar from './SearchBar';
 // import { item } from '../motion/MotionSettings';
 
 export default function Formalize({ onRead, onEdit, form, name }: any) {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const Header = () => {
         // console.log(form.fields);
-        const { plural_name, table } = form.fields.$GLOBALS
+        const { plural_name, table } = form.fields.$GLOBALS;
 
         return (
             // <motion.div initial="hidden" animate="visible" variants={item}>
@@ -80,27 +80,27 @@ export default function Formalize({ onRead, onEdit, form, name }: any) {
                 </Grid>
             </Grid>
             // </motion.div>
-        )
-    }
+        );
+    };
 
     const generateFieldLabels = (fieldsObject: any) => {
-        const labels: string[] = []
-        let count = 0
+        const labels: string[] = [];
+        let count = 0;
 
         for (const fieldName in fieldsObject) {
             if (Object.prototype.hasOwnProperty.call(fieldsObject, fieldName)) {
-                count++
+                count++;
                 if (count >= 2 && count <= 4) {
-                    labels.push(fieldsObject[fieldName].label)
+                    labels.push(fieldsObject[fieldName].label);
                 }
             }
         }
 
-        const firstTwoLabels = labels.slice(0, 2).join(', ')
-        const lastLabel = labels.length > 2 ? ` ou ${labels[2]}` : ''
+        const firstTwoLabels = labels.slice(0, 2).join(', ');
+        const lastLabel = labels.length > 2 ? ` ou ${labels[2]}` : '';
 
-        return `${firstTwoLabels}${lastLabel}`
-    }
+        return `${firstTwoLabels}${lastLabel}`;
+    };
 
     const Table = () => {
         // console.log(form);
@@ -109,13 +109,13 @@ export default function Formalize({ onRead, onEdit, form, name }: any) {
             // <motion.div initial="hidden" animate="visible" variants={item}>
             <BrowseTable fields={form.fields} />
             // </motion.div>
-        )
-    }
+        );
+    };
 
     return (
         <>
             {Header()}
             {Table()}
         </>
-    )
+    );
 }
